@@ -1,5 +1,19 @@
 # Martian Robots
 
+### Installation
+
+To install
+
+> ```console
+> $ npm install
+> ```
+
+To run the tests
+
+> ```console
+> $ npm test
+> ```
+
 ### Requirements
 
 Write a program that determines each sequence of robot positions and reports the final position of the robot.
@@ -27,23 +41,21 @@ the last grid position the robot occupied before disappearing over the edge. An 
 move “off” the world from a grid point from which a robot has been previously lost is simply
 ignored by the current robot.
 
+### Timeline
+
+Two to three hours
+
 ### Process
 
-Wireframing
+Drawing out the problem helped with an understanding of it
+
+![alt text](https://github.com/RuLette/martianRobotsChallenge/issues/1#issue-1251965925)
 
 Test driven development:
 Pseudo coding => writing failing test cases => writing the code => getting test to pass => refactoring
 
-### Installation
+### WIP
 
-To install
+Some lost robots are still returning as the last known coordinate of the robot, but should be returning the robot's last known drop off point instead
 
-> ```console
-> $ npm install
-> ```
-
-To run the tests
-
-> ```console
-> $ npm test
-> ```
+Some functions are getting large and could use some refactoring
