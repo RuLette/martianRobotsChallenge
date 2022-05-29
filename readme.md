@@ -49,7 +49,7 @@ Two to three hours
 
 Drawing out the problem helped with an understanding of it
 
-![alt text](https://github.com/RuLette/martianRobotsChallenge/issues/1#issue-1251965925)
+![sketch](https://user-images.githubusercontent.com/29276064/170887214-de68d6ca-f766-4d3d-a6c9-a7850c7a6cb0.jpeg)
 
 Test driven development:
 Pseudo coding => writing failing test cases => writing the code => getting test to pass => refactoring

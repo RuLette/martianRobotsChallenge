@@ -1,9 +1,10 @@
 const compass = ["N", "E", "S", "W"];
 
-let coordinates = { x: "", y: "", pos: "" };
-let gridMaxCoordinates = [];
-let commands = [];
+let coordinates = { x: "", y: "", pos: "", status: "" };
+let lostCoordinates = [];
 let allCoordinates = [];
+let commands = [];
+let gridMaxCoordinates = [];
 
 function moveRobot(command) {
   let index;
@@ -47,16 +48,36 @@ function moveRobot(command) {
   return coordinates;
 }
 
+function checkIfRobotLost(input) {
+  if (lostCoordinates.some((lostCoordinate) => (lostCoordinate = input))) {
+    coordinates.status = "";
+  } else {
+    lostCoordinates.push.apply(lostCoordinates, [input]);
+    coordinates.status = "LOST";
+  }
+}
+
 function checkRobotGridBoundaries(input) {
   const maxXcoordinate = gridMaxCoordinates[0];
   const maxYcoordinate = gridMaxCoordinates[1];
   let { x, y } = input;
   let currentCoordinate = [x, y];
   if (x > maxXcoordinate) {
+    checkIfRobotLost(currentCoordinate);
     coordinates.x = maxXcoordinate;
   } else if (y > maxYcoordinate) {
+    checkIfRobotLost(currentCoordinate);
     coordinates.y = maxYcoordinate;
   }
+}
+
+function extractCoordinates(str) {
+  str = str.split(" ");
+  return {
+    x: Number(str[0]),
+    y: Number(str[1]),
+    pos: str[2],
+  };
 }
 
 function spliceIntoChunks(arr, chunkSize) {
@@ -67,15 +88,6 @@ function spliceIntoChunks(arr, chunkSize) {
     res.push(chunk);
   }
   return res;
-}
-
-function extractCoordinates(str) {
-  str = str.split(" ");
-  return {
-    x: Number(str[0]),
-    y: Number(str[1]),
-    pos: str[2],
-  };
 }
 
 function launchRobot(input) {
@@ -109,8 +121,8 @@ LLFFFLFLFL`
 );
 
 module.exports = {
+  spliceIntoChunks,
   launchRobot,
   moveRobot,
   extractCoordinates,
-  spliceIntoChunks,
 };
